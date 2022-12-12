@@ -6,7 +6,7 @@ By [Nhan](https://nhtnhanbn.github.io), reachable by [email](mailto:nhtnhanbn@gm
 
 ## Use online
 
-[nhtnhanbn.github.io/debateman/timer](https://nhtnhanbn.github.io/debateman/timer)
+[nhtnhanbn.github.io/debateman/timer/](https://nhtnhanbn.github.io/debateman/timer/)
 
 ## Use offline
 
