@@ -2,7 +2,7 @@ input {
     width: 3em;
 }
 
-button {
+.big_button {
     border-width: thick;
     width: 300px;
     font-size: 200%;

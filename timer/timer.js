@@ -1,6 +1,8 @@
 const CIRCUMFERENCE = 252;
 
 const bell = document.getElementById("bell");
+const countDirection = document.getElementById("count-direction");
+const buttonDirection = document.getElementById("button-direction");
 const warningMinutes = document.getElementById("warning-minutes");
 const warningSeconds = document.getElementById("warning-seconds");
 const stopMinutes = document.getElementById("stop-minutes");
@@ -52,6 +54,19 @@ function changeContinuous() {
   continuous = 60 * parseInt(continuousMinutes.value) + parseInt(continuousSeconds.value);
 }
 
+function countDown() {
+  countDirection.innerHTML = "Currently counting down to 0:00.";
+  buttonDirection.innerHTML = "Count up";
+  buttonDirection.setAttribute("onclick", "countUp()");
+}
+
+function countUp() {
+  countDirection.innerHTML = "Currently counting up from 0:00.";
+  buttonDirection.innerHTML = "Count down";
+  buttonDirection.setAttribute("onclick", "countDown()");
+}
+
+countUp();
 
 
 /* 1st Affirmative */ {
@@ -105,7 +120,10 @@ function changeContinuous() {
 
   function moveTime1A() {
     time1A += 1;
-    clockLabel1A.innerHTML = `${Math.floor(time1A / 60)}:${padSeconds(time1A % 60)}`;
+    
+    if (buttonDirection.innerHTML === "Count down") clockLabel1A.innerHTML = `${Math.trunc(time1A / 60)}:${padSeconds(time1A % 60)}`;
+    else if (-60 < stop - time1A && stop - time1A < 0) clockLabel1A.innerHTML = `-${Math.trunc((stop - time1A) / 60)}:${padSeconds(Math.abs(stop - time1A) % 60)}`;
+    else clockLabel1A.innerHTML = `${Math.trunc((stop - time1A) / 60)}:${padSeconds(Math.abs(stop - time1A) % 60)}`;
     
     if (time1A < stop) {
       if (time1A < warning) ringRemaining1A.style.stroke = "lime";
@@ -189,7 +207,10 @@ function changeContinuous() {
 
   function moveTime1N() {
     time1N += 1;
-    clockLabel1N.innerHTML = `${Math.floor(time1N / 60)}:${padSeconds(time1N % 60)}`;
+    
+    if (buttonDirection.innerHTML === "Count down") clockLabel1N.innerHTML = `${Math.trunc(time1N / 60)}:${padSeconds(time1N % 60)}`;
+    else if (-60 < stop - time1N && stop - time1N < 0) clockLabel1N.innerHTML = `-${Math.trunc((stop - time1N) / 60)}:${padSeconds(Math.abs(stop - time1N) % 60)}`
+    else clockLabel1N.innerHTML = `${Math.trunc((stop - time1N) / 60)}:${padSeconds(Math.abs(stop - time1N) % 60)}`;
     
     if (time1N < stop) {
       if (time1N < warning) ringRemaining1N.style.stroke = "lime";
@@ -273,7 +294,10 @@ function changeContinuous() {
 
   function moveTime2A() {
     time2A += 1;
-    clockLabel2A.innerHTML = `${Math.floor(time2A / 60)}:${padSeconds(time2A % 60)}`;
+    
+    if (buttonDirection.innerHTML === "Count down") clockLabel2A.innerHTML = `${Math.trunc(time2A / 60)}:${padSeconds(time2A % 60)}`;
+    else if (-60 < stop - time2A && stop - time2A < 0) clockLabel2A.innerHTML = `-${Math.trunc((stop - time2A) / 60)}:${padSeconds(Math.abs(stop - time2A) % 60)}`
+    else clockLabel2A.innerHTML = `${Math.trunc((stop - time2A) / 60)}:${padSeconds(Math.abs(stop - time2A) % 60)}`;
     
     if (time2A < stop) {
       if (time2A < warning) ringRemaining2A.style.stroke = "lime";
@@ -357,7 +381,10 @@ function changeContinuous() {
 
   function moveTime2N() {
     time2N += 1;
-    clockLabel2N.innerHTML = `${Math.floor(time2N / 60)}:${padSeconds(time2N % 60)}`;
+    
+    if (buttonDirection.innerHTML === "Count down") clockLabel2N.innerHTML = `${Math.trunc(time2N / 60)}:${padSeconds(time2N % 60)}`;
+    else if (-60 < stop - time2N && stop - time2N < 0) clockLabel2N.innerHTML = `-${Math.trunc((stop - time2N) / 60)}:${padSeconds(Math.abs(stop - time2N) % 60)}`
+    else clockLabel2N.innerHTML = `${Math.trunc((stop - time2N) / 60)}:${padSeconds(Math.abs(stop - time2N) % 60)}`;
     
     if (time2N < stop) {
       if (time2N < warning) ringRemaining2N.style.stroke = "lime";
@@ -441,7 +468,10 @@ function changeContinuous() {
 
   function moveTime3A() {
     time3A += 1;
-    clockLabel3A.innerHTML = `${Math.floor(time3A / 60)}:${padSeconds(time3A % 60)}`;
+    
+    if (buttonDirection.innerHTML === "Count down") clockLabel3A.innerHTML = `${Math.trunc(time3A / 60)}:${padSeconds(time3A % 60)}`;
+    else if (-60 < stop - time3A && stop - time3A < 0) clockLabel3A.innerHTML = `-${Math.trunc((stop - time3A) / 60)}:${padSeconds(Math.abs(stop - time3A) % 60)}`
+    else clockLabel3A.innerHTML = `${Math.trunc((stop - time3A) / 60)}:${padSeconds(Math.abs(stop - time3A) % 60)}`;
     
     if (time3A < stop) {
       if (time3A < warning) ringRemaining3A.style.stroke = "lime";
@@ -525,7 +555,10 @@ function changeContinuous() {
 
   function moveTime3N() {
     time3N += 1;
-    clockLabel3N.innerHTML = `${Math.floor(time3N / 60)}:${padSeconds(time3N % 60)}`;
+    
+    if (buttonDirection.innerHTML === "Count down") clockLabel3N.innerHTML = `${Math.trunc(time3N / 60)}:${padSeconds(time3N % 60)}`;
+    else if (-60 < stop - time3N && stop - time3N < 0) clockLabel3N.innerHTML = `-${Math.trunc((stop - time3N) / 60)}:${padSeconds(Math.abs(stop - time3N) % 60)}`
+    else clockLabel3N.innerHTML = `${Math.trunc((stop - time3N) / 60)}:${padSeconds(Math.abs(stop - time3N) % 60)}`;
     
     if (time3N < stop) {
       if (time3N < warning) ringRemaining3N.style.stroke = "lime";
