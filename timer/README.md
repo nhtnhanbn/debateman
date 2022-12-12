@@ -10,4 +10,4 @@ By [Nhan](https://nhtnhanbn.github.io), reachable by [email](mailto:nhtnhanbn@gm
 
 ## Use offline
 
-Download [timer.html](timer.html), [timer.css](timer.css), [timer.js](timer.js), [Foot 2.m4a](Foot 2.m4a) to the same folder. Then open the downloaded timer.html in a browser.
+Download [timer.html](timer.html), [timer.css](timer.css), [timer.js](timer.js), [Foot 2.m4a](Foot%202.m4a) to the same folder (you might need to press Raw then Ctrl+S to save to your computer). Then open the downloaded timer.html in a browser.
