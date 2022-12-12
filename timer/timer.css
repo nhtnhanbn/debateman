@@ -1,0 +1,61 @@
+input {
+    width: 3em;
+}
+
+button {
+    border-width: thick;
+    width: 300px;
+    font-size: 200%;
+    cursor: pointer;
+}
+
+.speaker {
+    border-top: 5px solid grey;
+}
+
+.inputimes {
+    display: grid;
+    gap: 5px 15px;
+    grid-template-columns: max-content max-content;
+}
+
+.clock {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.clock_circle {
+    fill: none;
+    stroke: none;
+}
+
+.clock_label {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 72px;
+}
+
+.ring_back {
+    stroke-width: 15px;
+    stroke: grey;
+}
+
+.ring_remaining {
+    stroke-width: 15px;
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: 1s linear all;
+}
+
+.ring_overtime {
+    stroke-width: 15px;
+    transform: rotate(90deg) scaleY(-1);
+    transform-origin: center;
+    transition: 1s linear all;
+}

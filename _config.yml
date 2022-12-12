@@ -1,0 +1,15 @@
+markdown: kramdown
+
+baseurl: /
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>{{ page.title}}</title>
+    <link rel="stylesheet" type="text/css" href="{{ '/assets/main.css' | relative_url }}">
+    {% seo %}
+</head>
+  <body>
+    <h1><a href="{{ '/' | relative_url }}" style="text-decoration:underline; color:black">DebateMan</a></h1>
+    <div class="container">
+      {{ content }}
+    </div>
+    <footer>
+      <ul>
+        <li><a href="https://github.com/nhtnhanbn/debateman">GitHub</a></li>
+        <li><a href="mailto:nhtnhanbn@gmail.com">Email</a></li>
+      </ul>
+      <p>Site by <a href="https://nhtnhanbn.github.io">Nhan</a>, thanks to <a href="https://jekyllrb.com">Jekyll</a>, <a href="https://github.io">GitHub Pages</a>, and <a href="{{ '/README' | relative_url }}">others</a>.</p>
+    </footer>
+  </body>
+</html>
