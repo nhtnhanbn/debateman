@@ -89,7 +89,7 @@ countUp();
     
     if (time1A > continuous) {
       bell.play();
-      continuousId1A = setInterval(() => {bell.currentTime=0}, 300);
+      continuousId1A = setInterval(() => {bell.currentTime=0}, 500);
     }
     
     button1A.innerHTML = "<b>STOP</b>";
@@ -176,7 +176,7 @@ countUp();
     
     if (time1N > continuous) {
       bell.play();
-      continuousId1N = setInterval(() => {bell.currentTime=0}, 300);
+      continuousId1N = setInterval(() => {bell.currentTime=0}, 500);
     }
     
     button1N.innerHTML = "<b>STOP</b>";
@@ -263,7 +263,7 @@ countUp();
     
     if (time2A > continuous) {
       bell.play();
-      continuousId2A = setInterval(() => {bell.currentTime=0}, 300);
+      continuousId2A = setInterval(() => {bell.currentTime=0}, 500);
     }
     
     button2A.innerHTML = "<b>STOP</b>";
@@ -350,7 +350,7 @@ countUp();
     
     if (time2N > continuous) {
       bell.play();
-      continuousId2N = setInterval(() => {bell.currentTime=0}, 300);
+      continuousId2N = setInterval(() => {bell.currentTime=0}, 500);
     }
     
     button2N.innerHTML = "<b>STOP</b>";
@@ -437,7 +437,7 @@ countUp();
     
     if (time3A > continuous) {
       bell.play();
-      continuousId3A = setInterval(() => {bell.currentTime=0}, 300);
+      continuousId3A = setInterval(() => {bell.currentTime=0}, 500);
     }
     
     button3A.innerHTML = "<b>STOP</b>";
@@ -524,7 +524,7 @@ countUp();
     
     if (time3N > continuous) {
       bell.play();
-      continuousId3N = setInterval(() => {bell.currentTime=0}, 300);
+      continuousId3N = setInterval(() => {bell.currentTime=0}, 500);
     }
     
     button3N.innerHTML = "<b>STOP</b>";
