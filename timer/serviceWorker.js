@@ -1,4 +1,6 @@
 const toCache = [
+	"./",
+	"index.html",
 	"timer.html",
 	"timer.css",
 	"timer.js",
@@ -7,7 +9,7 @@ const toCache = [
 
 self.addEventListener("install", installEvent => {
 	installEvent.waitUntil(
-		caches.open("assets").then(cache => {
+		caches.open("cache").then(cache => {
 			cache.addAll(toCache)
 		})
 	)
