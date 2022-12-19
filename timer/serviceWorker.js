@@ -1,6 +1,7 @@
 const toCache = [
 	"./",
 	"index.html",
+	"timer",
 	"timer.html",
 	"timer.css",
 	"timer.js",
