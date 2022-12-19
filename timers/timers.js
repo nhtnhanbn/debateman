@@ -594,7 +594,7 @@ countUp();
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
-      .register("serviceWorker.js")
+      .register("online/serviceWorker.js")
       .then(res => console.log("serviceWorker.js registered"))
       .catch(err => console.log("serviceWorker.js not registered", err))
     })

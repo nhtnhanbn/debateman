@@ -1,17 +1,17 @@
 {
-	"name": "DebateMan Timer",
-	"short_name": "DM Timer",
-	"start_url": "timer.html",
+	"name": "DebateMan Timers",
+	"short_name": "DM Timers",
+	"start_url": "../",
 	"display": "standalone",
 	"icons": [
 		{
-			"src": "timer192.png",
+			"src": "timers192.png",
 			"type": "image/png",
 			"sizes": "192x192"
 		},
 		{
 			
-			"src": "timer512.png",
+			"src": "timers512.png",
 			"type": "image/png",
 			"sizes": "512x512"
 		}
