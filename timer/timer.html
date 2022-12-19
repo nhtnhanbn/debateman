@@ -1,4 +1,5 @@
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>DebateMan Timers</title>
   <link rel="stylesheet" type="text/css" href="timer.css">
   <link rel="manifest" href="manifest.json">
@@ -6,306 +7,319 @@
 
 
 
-<h1>Timers</h1>
+<body>
+  <h1><a href="https://nhtnhanbn.github.io/debateman" style="text-decoration:underline; color:black">DebateMan</a></h1>
+  <h1>Timers</h1>
 
-<a href="https://github.com/nhtnhanbn/debateman/tree/main/timer">GitHub repository and downloads for offline use</a>
+  <a href="https://github.com/nhtnhanbn/debateman/tree/main/timer">Instructions for offline use</a>
 
-<p><a href="mailto:nhtnhanbn@gmail.com">Email Nhan</a> to report any bugs.</p>
+  <p><a href="mailto:nhtnhanbn@gmail.com">Email Nhan</a> to report any bugs.</p>
 
-<p>Simple timers for Australasian 3v3 debates. No separate timers for reply speeches, but you can just reset the speaking times and reuse timers.</p>
+  <p>Simple timers for Australasian 3v3 debates. No separate timers for reply speeches, but you can just reset the speaking times and reuse timers.</p>
 
-<p>Timekeepers: Play the bell sound before starting to ensure that debaters are able to hear and are familiar with it.</p>
+  <p>Timekeepers: Play the bell sound before starting to ensure that debaters are able to hear and are familiar with it.</p>
 
-<p>Speakers: Mute the bell sound by pressing the loudspeaker icon. Test it before starting to ensure that it is muted.</p>
+  <p>Speakers: Mute the bell sound by pressing the loudspeaker icon. Test it before starting to ensure that it is muted.</p>
 
-<audio controls id="bell" src="Foot 2.m4a"></audio>
+  <audio controls id="bell" src="Foot 2.m4a"></audio>
 
-<br><br>
+  <br><br>
 
-<p>Set speaking times in <i>minutes : seconds</i>. Best to set this beforehand with warning bell before time bell before continuous bell.</p>
+  <p>Set speaking times in <i>minutes : seconds</i>. Best to set this beforehand with warning bell before time bell before continuous bell.</p>
 
-<div class="inputimes">
-  <span>
-  <input type="number" onfocusout="changeWarning()" min=0 placeholder="0" dir="rtl" id="warning-minutes">
-  :
-  <input type="number" onfocusout="changeWarning()" min=0 max=59 placeholder="00" id="warning-seconds">
-  </span>
-  <label>Warning bell</label>
+  <div class="inputimes">
+    <span>
+    <input type="number" onfocusout="changeWarning()" min=0 placeholder="0" dir="rtl" id="warning-minutes">
+    :
+    <input type="number" onfocusout="changeWarning()" min=0 max=59 placeholder="00" id="warning-seconds">
+    </span>
+    <label>Warning bell</label>
 
-  <span>
-  <input type="number" onfocusout="changeStop()" min=0 placeholder="0" dir="rtl" id="stop-minutes">
-  :
-  <input type="number" onfocusout="changeStop()" min=0 max=59 placeholder="00" id="stop-seconds">
-  </span>
-  <label>Time bell</label>
+    <span>
+    <input type="number" onfocusout="changeStop()" min=0 placeholder="0" dir="rtl" id="stop-minutes">
+    :
+    <input type="number" onfocusout="changeStop()" min=0 max=59 placeholder="00" id="stop-seconds">
+    </span>
+    <label>Time bell</label>
 
-  <span>
-  <input type="number" onfocusout="changeContinuous()" min=0 placeholder="0" dir="rtl" id="continuous-minutes">
-  :
-  <input type="number" onfocusout="changeContinuous()" min=0 max=59 placeholder="00" id="continuous-seconds">
-  </span>
-  <label>Continuous bell</label>
-</div>
-
-<br>
-
-<p id="count-direction"></p>
-<button type="button" id="button-direction" style="width:7em"></button>
-
-<br><br>
-
-
-
-<div class="speaker">
-  <h1>1st Affirmative</h1>
-
-  <button class="big_button" type="button" onclick="resetTime1A()" style="background-color:grey;border-color:grey"><b>RESET</b></button>
-
-  <div class="clock">
-    <svg class="clock_svg" viewBox="0 0 100 100">
-      <g class="clock_circle">
-        <circle class="ring_back" cx="50" cy="50" r="40" />
-        <path
-          id="ring-remaining-1a"
-          class="ring_remaining"
-          d="
-            M 50,50
-            m -40,0
-            a 40,40 0 1,0 80,0
-            a 40,40 0 1,0 -80,0
-          "
-        ></path>
-        <path
-          id="ring-overtime-1a"
-          class="ring_overtime"
-          d="
-            M 50,50
-            m -40,0
-            a 40,40 0 1,0 80,0
-            a 40,40 0 1,0 -80,0
-          "
-        ></path>
-      </g>
-    </svg>
-
-    <span id="clock-label-1a" class="clock_label"></span>
+    <span>
+    <input type="number" onfocusout="changeContinuous()" min=0 placeholder="0" dir="rtl" id="continuous-minutes">
+    :
+    <input type="number" onfocusout="changeContinuous()" min=0 max=59 placeholder="00" id="continuous-seconds">
+    </span>
+    <label>Continuous bell</label>
   </div>
 
-  <button class="big_button" id="button-1a" type="button"></button>
+  <br>
+
+  <p id="count-direction"></p>
+  <button type="button" id="button-direction" style="width:7em"></button>
+
+  <br><br>
+
+
+
+  <div class="speaker">
+    <h1>1st Affirmative</h1>
+
+    <button class="big_button" type="button" onclick="resetTime1A()" style="background-color:grey;border-color:grey"><b>RESET</b></button>
+
+    <div class="clock">
+      <svg class="clock_svg" viewBox="0 0 100 100">
+        <g class="clock_circle">
+          <circle class="ring_back" cx="50" cy="50" r="40" />
+          <path
+            id="ring-remaining-1a"
+            class="ring_remaining"
+            d="
+              M 50,50
+              m -40,0
+              a 40,40 0 1,0 80,0
+              a 40,40 0 1,0 -80,0
+            "
+          ></path>
+          <path
+            id="ring-overtime-1a"
+            class="ring_overtime"
+            d="
+              M 50,50
+              m -40,0
+              a 40,40 0 1,0 80,0
+              a 40,40 0 1,0 -80,0
+            "
+          ></path>
+        </g>
+      </svg>
+
+      <span id="clock-label-1a" class="clock_label"></span>
+    </div>
+
+    <button class="big_button" id="button-1a" type="button"></button>
+    
+    <br><br>
+  </div>
+
+
+
+  <div class="speaker">
+    <h1>1st Negative</h1>
+
+    <button class="big_button" type="button" onclick="resetTime1N()" style="background-color:grey;border-color:grey"><b>RESET</b></button>
+
+    <div class="clock">
+      <svg class="clock_svg" viewBox="0 0 100 100">
+        <g class="clock_circle">
+          <circle class="ring_back" cx="50" cy="50" r="40" />
+          <path
+            id="ring-remaining-1n"
+            class="ring_remaining"
+            d="
+              M 50,50
+              m -40,0
+              a 40,40 0 1,0 80,0
+              a 40,40 0 1,0 -80,0
+            "
+          ></path>
+          <path
+            id="ring-overtime-1n"
+            class="ring_overtime"
+            d="
+              M 50,50
+              m -40,0
+              a 40,40 0 1,0 80,0
+              a 40,40 0 1,0 -80,0
+            "
+          ></path>
+        </g>
+      </svg>
+
+      <span id="clock-label-1n" class="clock_label"></span>
+    </div>
+
+    <button class="big_button" id="button-1n" type="button"></button>
+
+    <br><br>
+  </div>
+
+
+
+  <div class="speaker">
+    <h1>2nd Affirmative</h1>
+
+    <button class="big_button" type="button" onclick="resetTime2A()" style="background-color:grey;border-color:grey"><b>RESET</b></button>
+
+    <div class="clock">
+      <svg class="clock_svg" viewBox="0 0 100 100">
+        <g class="clock_circle">
+          <circle class="ring_back" cx="50" cy="50" r="40" />
+          <path
+            id="ring-remaining-2a"
+            class="ring_remaining"
+            d="
+              M 50,50
+              m -40,0
+              a 40,40 0 1,0 80,0
+              a 40,40 0 1,0 -80,0
+            "
+          ></path>
+          <path
+            id="ring-overtime-2a"
+            class="ring_overtime"
+            d="
+              M 50,50
+              m -40,0
+              a 40,40 0 1,0 80,0
+              a 40,40 0 1,0 -80,0
+            "
+          ></path>
+        </g>
+      </svg>
+
+      <span id="clock-label-2a" class="clock_label"></span>
+    </div>
+
+    <button class="big_button" id="button-2a" type="button"></button>
+    
+    <br><br>
+  </div>
+
+
+
+  <div class="speaker">
+    <h1>2nd Negative</h1>
+
+    <button class="big_button" type="button" onclick="resetTime2N()" style="background-color:grey;border-color:grey"><b>RESET</b></button>
+
+    <div class="clock">
+      <svg class="clock_svg" viewBox="0 0 100 100">
+        <g class="clock_circle">
+          <circle class="ring_back" cx="50" cy="50" r="40" />
+          <path
+            id="ring-remaining-2n"
+            class="ring_remaining"
+            d="
+              M 50,50
+              m -40,0
+              a 40,40 0 1,0 80,0
+              a 40,40 0 1,0 -80,0
+            "
+          ></path>
+          <path
+            id="ring-overtime-2n"
+            class="ring_overtime"
+            d="
+              M 50,50
+              m -40,0
+              a 40,40 0 1,0 80,0
+              a 40,40 0 1,0 -80,0
+            "
+          ></path>
+        </g>
+      </svg>
+
+      <span id="clock-label-2n" class="clock_label"></span>
+    </div>
+
+    <button class="big_button" id="button-2n" type="button"></button>
+
+    <br><br>
+  </div>
+
+
+
+  <div class="speaker">
+    <h1>3rd Affirmative</h1>
+
+    <button class="big_button" type="button" onclick="resetTime3A()" style="background-color:grey;border-color:grey"><b>RESET</b></button>
+
+    <div class="clock">
+      <svg class="clock_svg" viewBox="0 0 100 100">
+        <g class="clock_circle">
+          <circle class="ring_back" cx="50" cy="50" r="40" />
+          <path
+            id="ring-remaining-3a"
+            class="ring_remaining"
+            d="
+              M 50,50
+              m -40,0
+              a 40,40 0 1,0 80,0
+              a 40,40 0 1,0 -80,0
+            "
+          ></path>
+          <path
+            id="ring-overtime-3a"
+            class="ring_overtime"
+            d="
+              M 50,50
+              m -40,0
+              a 40,40 0 1,0 80,0
+              a 40,40 0 1,0 -80,0
+            "
+          ></path>
+        </g>
+      </svg>
+
+      <span id="clock-label-3a" class="clock_label"></span>
+    </div>
+
+    <button class="big_button" id="button-3a" type="button"></button>
+    
+    <br><br>
+  </div>
+
+
+
+  <div class="speaker">
+    <h1>3rd Negative</h1>
+
+    <button class="big_button" type="button" onclick="resetTime3N()" style="background-color:grey;border-color:grey"><b>RESET</b></button>
+
+    <div class="clock">
+      <svg class="clock_svg" viewBox="0 0 100 100">
+        <g class="clock_circle">
+          <circle class="ring_back" cx="50" cy="50" r="40" />
+          <path
+            id="ring-remaining-3n"
+            class="ring_remaining"
+            d="
+              M 50,50
+              m -40,0
+              a 40,40 0 1,0 80,0
+              a 40,40 0 1,0 -80,0
+            "
+          ></path>
+          <path
+            id="ring-overtime-3n"
+            class="ring_overtime"
+            d="
+              M 50,50
+              m -40,0
+              a 40,40 0 1,0 80,0
+              a 40,40 0 1,0 -80,0
+            "
+          ></path>
+        </g>
+      </svg>
+
+      <span id="clock-label-3n" class="clock_label"></span>
+    </div>
+
+    <button class="big_button" id="button-3n" type="button"></button>
+
+    <br><br>
+  </div>
   
-  <br><br>
-</div>
-
-
-
-<div class="speaker">
-  <h1>1st Negative</h1>
-
-  <button class="big_button" type="button" onclick="resetTime1N()" style="background-color:grey;border-color:grey"><b>RESET</b></button>
-
-  <div class="clock">
-    <svg class="clock_svg" viewBox="0 0 100 100">
-      <g class="clock_circle">
-        <circle class="ring_back" cx="50" cy="50" r="40" />
-        <path
-          id="ring-remaining-1n"
-          class="ring_remaining"
-          d="
-            M 50,50
-            m -40,0
-            a 40,40 0 1,0 80,0
-            a 40,40 0 1,0 -80,0
-          "
-        ></path>
-        <path
-          id="ring-overtime-1n"
-          class="ring_overtime"
-          d="
-            M 50,50
-            m -40,0
-            a 40,40 0 1,0 80,0
-            a 40,40 0 1,0 -80,0
-          "
-        ></path>
-      </g>
-    </svg>
-
-    <span id="clock-label-1n" class="clock_label"></span>
-  </div>
-
-  <button class="big_button" id="button-1n" type="button"></button>
-
-  <br><br>
-</div>
-
-
-
-<div class="speaker">
-  <h1>2nd Affirmative</h1>
-
-  <button class="big_button" type="button" onclick="resetTime2A()" style="background-color:grey;border-color:grey"><b>RESET</b></button>
-
-  <div class="clock">
-    <svg class="clock_svg" viewBox="0 0 100 100">
-      <g class="clock_circle">
-        <circle class="ring_back" cx="50" cy="50" r="40" />
-        <path
-          id="ring-remaining-2a"
-          class="ring_remaining"
-          d="
-            M 50,50
-            m -40,0
-            a 40,40 0 1,0 80,0
-            a 40,40 0 1,0 -80,0
-          "
-        ></path>
-        <path
-          id="ring-overtime-2a"
-          class="ring_overtime"
-          d="
-            M 50,50
-            m -40,0
-            a 40,40 0 1,0 80,0
-            a 40,40 0 1,0 -80,0
-          "
-        ></path>
-      </g>
-    </svg>
-
-    <span id="clock-label-2a" class="clock_label"></span>
-  </div>
-
-  <button class="big_button" id="button-2a" type="button"></button>
   
-  <br><br>
-</div>
-
-
-
-<div class="speaker">
-  <h1>2nd Negative</h1>
-
-  <button class="big_button" type="button" onclick="resetTime2N()" style="background-color:grey;border-color:grey"><b>RESET</b></button>
-
-  <div class="clock">
-    <svg class="clock_svg" viewBox="0 0 100 100">
-      <g class="clock_circle">
-        <circle class="ring_back" cx="50" cy="50" r="40" />
-        <path
-          id="ring-remaining-2n"
-          class="ring_remaining"
-          d="
-            M 50,50
-            m -40,0
-            a 40,40 0 1,0 80,0
-            a 40,40 0 1,0 -80,0
-          "
-        ></path>
-        <path
-          id="ring-overtime-2n"
-          class="ring_overtime"
-          d="
-            M 50,50
-            m -40,0
-            a 40,40 0 1,0 80,0
-            a 40,40 0 1,0 -80,0
-          "
-        ></path>
-      </g>
-    </svg>
-
-    <span id="clock-label-2n" class="clock_label"></span>
-  </div>
-
-  <button class="big_button" id="button-2n" type="button"></button>
-
-  <br><br>
-</div>
-
-
-
-<div class="speaker">
-  <h1>3rd Affirmative</h1>
-
-  <button class="big_button" type="button" onclick="resetTime3A()" style="background-color:grey;border-color:grey"><b>RESET</b></button>
-
-  <div class="clock">
-    <svg class="clock_svg" viewBox="0 0 100 100">
-      <g class="clock_circle">
-        <circle class="ring_back" cx="50" cy="50" r="40" />
-        <path
-          id="ring-remaining-3a"
-          class="ring_remaining"
-          d="
-            M 50,50
-            m -40,0
-            a 40,40 0 1,0 80,0
-            a 40,40 0 1,0 -80,0
-          "
-        ></path>
-        <path
-          id="ring-overtime-3a"
-          class="ring_overtime"
-          d="
-            M 50,50
-            m -40,0
-            a 40,40 0 1,0 80,0
-            a 40,40 0 1,0 -80,0
-          "
-        ></path>
-      </g>
-    </svg>
-
-    <span id="clock-label-3a" class="clock_label"></span>
-  </div>
-
-  <button class="big_button" id="button-3a" type="button"></button>
   
-  <br><br>
-</div>
+  <footer>
+    <ul>
+      <li><a href="https://github.com/nhtnhanbn/debateman/tree/main/timer">GitHub</a></li>
+      <li><a href="mailto:nhtnhanbn@gmail.com">Email</a></li>
+    </ul>
+    <p>By <a href="https://nhtnhanbn.github.io">Nhan</a></p>
+  </footer>
 
 
 
-<div class="speaker">
-  <h1>3rd Negative</h1>
-
-  <button class="big_button" type="button" onclick="resetTime3N()" style="background-color:grey;border-color:grey"><b>RESET</b></button>
-
-  <div class="clock">
-    <svg class="clock_svg" viewBox="0 0 100 100">
-      <g class="clock_circle">
-        <circle class="ring_back" cx="50" cy="50" r="40" />
-        <path
-          id="ring-remaining-3n"
-          class="ring_remaining"
-          d="
-            M 50,50
-            m -40,0
-            a 40,40 0 1,0 80,0
-            a 40,40 0 1,0 -80,0
-          "
-        ></path>
-        <path
-          id="ring-overtime-3n"
-          class="ring_overtime"
-          d="
-            M 50,50
-            m -40,0
-            a 40,40 0 1,0 80,0
-            a 40,40 0 1,0 -80,0
-          "
-        ></path>
-      </g>
-    </svg>
-
-    <span id="clock-label-3n" class="clock_label"></span>
-  </div>
-
-  <button class="big_button" id="button-3n" type="button"></button>
-
-  <br><br>
-</div>
-
-
-
-<script src="timer.js"></script>
+  <script src="timer.js"></script>
+</body>

@@ -12,7 +12,7 @@ nav ul, footer ul {
 
 nav ul li, footer ul li {
     display: inline;
-    margin-right: 20px
+    margin-right: 20px;
 }
 
 a {
@@ -55,21 +55,8 @@ footer {
     font-size: 80%;
 }
 
-ul.posts {
-    padding-left: 0;
-    font-size: 100%;
-}
-
-ul.posts li {
-    list-style: none;
-}
-
 img {
     width: 85vw;
     max-width: 500px;
     height: auto;
-}
-
-details summary {
-    cursor: pointer;
 }
