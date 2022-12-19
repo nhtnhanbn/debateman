@@ -3,6 +3,7 @@ const CIRCUMFERENCE = 252;
 const bell = document.getElementById("bell");
 const countDirection = document.getElementById("count-direction");
 const buttonDirection = document.getElementById("button-direction");
+const timeForm = document.getElementById("time-form");
 const warningMinutes = document.getElementById("warning-minutes");
 const warningSeconds = document.getElementById("warning-seconds");
 const stopMinutes = document.getElementById("stop-minutes");
@@ -19,6 +20,17 @@ function padSeconds(seconds) {
     seconds = `0${seconds}`.slice(-2);
   }
   return seconds;
+}
+
+function resetAll() {
+  timeForm.reset();
+  countUp();
+  resetTime1A();
+  resetTime1N();
+  resetTime2A();
+  resetTime2N();
+  resetTime3A();
+  resetTime3N();
 }
 
 function defaults() {
@@ -66,10 +78,9 @@ function countUp() {
   buttonDirection.setAttribute("onclick", "countDown()");
 }
 
-countUp();
 
 
-/* 1st Affirmative */ {
+/* 1st Affirmative */
   let intervalId1A;
   let continuousId1A;
 
@@ -151,12 +162,9 @@ countUp();
     }
   }
 
-  resetTime1A();
-}
 
 
-
-/* 1st Negative */ {
+/* 1st Negative */
   let intervalId1N;
   let continuousId1N;
 
@@ -238,12 +246,9 @@ countUp();
     }
   }
 
-  resetTime1N();
-}
 
 
-
-/* 2nd Affirmative */ {
+/* 2nd Affirmative */
   let intervalId2A;
   let continuousId2A;
 
@@ -325,12 +330,9 @@ countUp();
     }
   }
 
-  resetTime2A();
-}
 
 
-
-/* 2nd Negative */ {
+/* 2nd Negative */
   let intervalId2N;
   let continuousId2N;
 
@@ -412,12 +414,9 @@ countUp();
     }
   }
 
-  resetTime2N();
-}
 
 
-
-/* 3rd Affirmative */ {
+/* 3rd Affirmative */
   let intervalId3A;
   let continuousId3A;
 
@@ -499,12 +498,9 @@ countUp();
     }
   }
 
-  resetTime3A();
-}
 
 
-
-/* 3rd Negative */ {
+/* 3rd Negative */
   let intervalId3N;
   let continuousId3N;
 
@@ -586,5 +582,6 @@ countUp();
     }
   }
 
-  resetTime3N();
-}
+
+
+resetAll();

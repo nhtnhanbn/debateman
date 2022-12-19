@@ -9,24 +9,28 @@
 <body>
   <h1><a href="https://nhtnhanbn.github.io/debateman" style="text-decoration:underline; color:black">DebateMan</a></h1>
   <h1>Timers</h1>
+  
+  <p>If offline, reloading the webpage may or may not lose the bell. Click the button below to reset all times, clocks and settings without reloading the webpage.</p>
+  <button type="button" onclick="resetAll()">RESET ALL</button>
+  <br><br><br>
 
   <a href="https://github.com/nhtnhanbn/debateman/tree/main/timers">Instructions for offline use</a>
 
   <p><a href="mailto:nhtnhanbn@gmail.com">Email Nhan</a> to report any bugs.</p>
 
   <p>Simple timers for Australasian 3v3 debates. No separate timers for reply speeches, but you can just reset the speaking times and reuse timers.</p>
+  <br>
 
   <p>Timekeepers: Play the bell sound before starting to ensure that debaters are able to hear and are familiar with it.</p>
 
   <p>Speakers: Mute the bell sound by pressing the loudspeaker icon. Test it before starting to ensure that it is muted.</p>
 
   <audio controls id="bell" src="Foot 2.m4a"></audio>
-
-  <br><br>
+  <br><br><br>
 
   <p>Set speaking times in <i>minutes : seconds</i>. Best to set this beforehand with warning bell before time bell before continuous bell.</p>
 
-  <div class="inputimes">
+  <form class="inputimes" id="time-form">
     <span>
     <input type="number" onfocusout="changeWarning()" min=0 placeholder="0" dir="rtl" id="warning-minutes">
     :
@@ -47,14 +51,12 @@
     <input type="number" onfocusout="changeContinuous()" min=0 max=59 placeholder="00" id="continuous-seconds">
     </span>
     <label>Continuous bell</label>
-  </div>
-
+  </form>
   <br>
 
   <p id="count-direction"></p>
   <button type="button" id="button-direction" style="width:7em"></button>
-
-  <br><br>
+  <br><br><br>
 
 
 

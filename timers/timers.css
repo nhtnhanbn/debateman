@@ -1,6 +1,7 @@
 body {
     margin: auto;
     width: 90%;
+    overscroll-behavior-y: contain;
 }
 
 a {
