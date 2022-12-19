@@ -1,11 +1,9 @@
 const toCache = [
-	"../",
-	"../index.html",
-	"../timers",
-	"../timers.html",
-	"../timers.css",
-	"../timers.js",
-	"../Foot 2.m4a",
+	"./",
+	"index.html",
+	"timers.css",
+	"timers.js",
+	"Foot 2.m4a",
 ]
 
 self.addEventListener("install", installEvent => {

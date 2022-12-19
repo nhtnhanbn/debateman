@@ -10,4 +10,4 @@ By [Nhan](https://nhtnhanbn.github.io), reachable by [email](mailto:nhtnhanbn@gm
 
 ## Use offline
 
-[Download](https://downgit.github.io/#/home?url=https://github.com/nhtnhanbn/debateman/tree/main/timers) and unzip. Keep all files in a single folder. Then open the downloaded timers.html in a browser.
+[Download](https://downgit.github.io/#/home?url=https://github.com/nhtnhanbn/debateman/tree/main/timers) and unzip. Keep all files in a single folder and do not change any filenames. Then open the downloaded timers.html in a browser.

@@ -588,14 +588,3 @@ countUp();
 
   resetTime3N();
 }
-
-
-
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("online/serviceWorker.js")
-      .then(res => console.log("serviceWorker.js registered"))
-      .catch(err => console.log("serviceWorker.js not registered", err))
-    })
-};

@@ -1,7 +1,7 @@
 {
 	"name": "DebateMan Timers",
 	"short_name": "DM Timers",
-	"start_url": "../",
+	"start_url": "./",
 	"display": "standalone",
 	"icons": [
 		{
