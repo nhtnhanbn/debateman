@@ -4,6 +4,7 @@ const toCache = [
 	"timers.css",
 	"timers.js",
 	"Foot 2.m4a",
+	"timers.ico",
 ]
 
 self.addEventListener("install", installEvent => {
