@@ -16,7 +16,6 @@ let warning = 0;
 let stop = 0;
 let continuous = 0;
 let wakeLockSupport = true;
-let wakeLock = null;
 
 function padSeconds(seconds) {
   if (seconds !== "" && seconds < 10) {
@@ -82,38 +81,6 @@ function countUp() {
   buttonDirection.setAttribute("onclick", "countDown()");
 }
 
-async function requestWakeLock() {
-  if (wakeLockSupport) {
-    try {
-      wakeLock = await navigator.wakeLock.request("screen");
-      wakeLock.addEventListener("release", () => {
-        console.log("Wake lock released!");
-      });
-      console.log("Wake lock acquired!");
-    } catch (error) {
-      console.error(error);
-    }
-  }
-}
-
-async function releaseWakeLock() {
-  if (wakeLock !== null) {
-    try {
-      wakeLock.release().then(() => {
-        wakeLock = null;
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  }
-}
-
-document.addEventListener("visibilitychange", async () => {
-  if (wakeLock !== null && document.visibilityState === "visible") {
-    requestWakeLock();
-  }
-});
-
 if (!("wakeLock" in navigator)) {
   wakeLockSupport = false;
   wakeMessage.innerHTML = "Wake lock may not be supported by this device or browser. You should ensure that your device's screen timeout time will not interfere with your device displaying the clocks.";
@@ -124,6 +91,7 @@ if (!("wakeLock" in navigator)) {
 /* 1st Affirmative */
   let intervalId1A;
   let continuousId1A;
+  let wakeLock1A = null;
 
   const button1A = document.getElementById("button-1a");
   const clockLabel1A = document.getElementById("clock-label-1a");
@@ -149,7 +117,7 @@ if (!("wakeLock" in navigator)) {
     button1A.style.backgroundColor = "red";
     button1A.setAttribute("onclick", "stopTime1A()");
     
-    requestWakeLock();
+    requestWakeLock1A();
   }
 
   function stopTime1A() {
@@ -161,7 +129,7 @@ if (!("wakeLock" in navigator)) {
     button1A.style.backgroundColor = "lime";
     button1A.setAttribute("onclick", "startTime1A()");
     
-    releaseWakeLock();
+    releaseWakeLock1A();
   }
 
   function resetTime1A() {
@@ -206,12 +174,45 @@ if (!("wakeLock" in navigator)) {
       ringOvertime1A.setAttribute("stroke-dasharray", `${CIRCUMFERENCE*(time1A-stop+1)/(continuous-stop)} ${CIRCUMFERENCE}`);
     }
   }
+  
+  async function requestWakeLock1A() {
+    if (wakeLockSupport) {
+      try {
+        wakeLock1A = await navigator.wakeLock.request("screen");
+        wakeLock1A.addEventListener("release", () => {
+          console.log("Wake lock 1A released!");
+        });
+        console.log("Wake lock 1A acquired!");
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+
+  async function releaseWakeLock1A() {
+    if (wakeLock1A !== null) {
+      try {
+        wakeLock1A.release().then(() => {
+          wakeLock1A = null;
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+
+  document.addEventListener("visibilitychange", async () => {
+    if (wakeLock1A !== null && document.visibilityState === "visible") {
+      requestWakeLock1A();
+    }
+  });
 
 
 
 /* 1st Negative */
   let intervalId1N;
   let continuousId1N;
+  let wakeLock1N = null;
 
   const button1N = document.getElementById("button-1n");
   const clockLabel1N = document.getElementById("clock-label-1n");
@@ -237,7 +238,7 @@ if (!("wakeLock" in navigator)) {
     button1N.style.backgroundColor = "red";
     button1N.setAttribute("onclick", "stopTime1N()");
     
-    requestWakeLock();
+    requestWakeLock1N();
   }
 
   function stopTime1N() {
@@ -249,7 +250,7 @@ if (!("wakeLock" in navigator)) {
     button1N.style.backgroundColor = "lime";
     button1N.setAttribute("onclick", "startTime1N()");
     
-    releaseWakeLock();
+    releaseWakeLock1N();
   }
 
   function resetTime1N() {
@@ -266,7 +267,7 @@ if (!("wakeLock" in navigator)) {
     time1N += 1;
     
     if (buttonDirection.innerHTML === "Count down") clockLabel1N.innerHTML = `${Math.trunc(time1N / 60)}:${padSeconds(time1N % 60)}`;
-    else if (-60 < stop - time1N && stop - time1N < 0) clockLabel1N.innerHTML = `-${Math.trunc((stop - time1N) / 60)}:${padSeconds(Math.abs(stop - time1N) % 60)}`
+    else if (-60 < stop - time1N && stop - time1N < 0) clockLabel1N.innerHTML = `-${Math.trunc((stop - time1N) / 60)}:${padSeconds(Math.abs(stop - time1N) % 60)}`;
     else clockLabel1N.innerHTML = `${Math.trunc((stop - time1N) / 60)}:${padSeconds(Math.abs(stop - time1N) % 60)}`;
     
     if (time1N < stop) {
@@ -294,12 +295,45 @@ if (!("wakeLock" in navigator)) {
       ringOvertime1N.setAttribute("stroke-dasharray", `${CIRCUMFERENCE*(time1N-stop+1)/(continuous-stop)} ${CIRCUMFERENCE}`);
     }
   }
+  
+  async function requestWakeLock1N() {
+    if (wakeLockSupport) {
+      try {
+        wakeLock1N = await navigator.wakeLock.request("screen");
+        wakeLock1N.addEventListener("release", () => {
+          console.log("Wake lock 1N released!");
+        });
+        console.log("Wake lock 1N acquired!");
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+
+  async function releaseWakeLock1N() {
+    if (wakeLock1N !== null) {
+      try {
+        wakeLock1N.release().then(() => {
+          wakeLock1N = null;
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+
+  document.addEventListener("visibilitychange", async () => {
+    if (wakeLock1N !== null && document.visibilityState === "visible") {
+      requestWakeLock1N();
+    }
+  });
 
 
 
 /* 2nd Affirmative */
   let intervalId2A;
   let continuousId2A;
+  let wakeLock2A = null;
 
   const button2A = document.getElementById("button-2a");
   const clockLabel2A = document.getElementById("clock-label-2a");
@@ -325,7 +359,7 @@ if (!("wakeLock" in navigator)) {
     button2A.style.backgroundColor = "red";
     button2A.setAttribute("onclick", "stopTime2A()");
     
-    requestWakeLock();
+    requestWakeLock2A();
   }
 
   function stopTime2A() {
@@ -337,7 +371,7 @@ if (!("wakeLock" in navigator)) {
     button2A.style.backgroundColor = "lime";
     button2A.setAttribute("onclick", "startTime2A()");
     
-    releaseWakeLock();
+    releaseWakeLock2A();
   }
 
   function resetTime2A() {
@@ -354,7 +388,7 @@ if (!("wakeLock" in navigator)) {
     time2A += 1;
     
     if (buttonDirection.innerHTML === "Count down") clockLabel2A.innerHTML = `${Math.trunc(time2A / 60)}:${padSeconds(time2A % 60)}`;
-    else if (-60 < stop - time2A && stop - time2A < 0) clockLabel2A.innerHTML = `-${Math.trunc((stop - time2A) / 60)}:${padSeconds(Math.abs(stop - time2A) % 60)}`
+    else if (-60 < stop - time2A && stop - time2A < 0) clockLabel2A.innerHTML = `-${Math.trunc((stop - time2A) / 60)}:${padSeconds(Math.abs(stop - time2A) % 60)}`;
     else clockLabel2A.innerHTML = `${Math.trunc((stop - time2A) / 60)}:${padSeconds(Math.abs(stop - time2A) % 60)}`;
     
     if (time2A < stop) {
@@ -382,12 +416,45 @@ if (!("wakeLock" in navigator)) {
       ringOvertime2A.setAttribute("stroke-dasharray", `${CIRCUMFERENCE*(time2A-stop+1)/(continuous-stop)} ${CIRCUMFERENCE}`);
     }
   }
+  
+  async function requestWakeLock2A() {
+    if (wakeLockSupport) {
+      try {
+        wakeLock2A = await navigator.wakeLock.request("screen");
+        wakeLock2A.addEventListener("release", () => {
+          console.log("Wake lock 2A released!");
+        });
+        console.log("Wake lock 2A acquired!");
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+
+  async function releaseWakeLock2A() {
+    if (wakeLock2A !== null) {
+      try {
+        wakeLock2A.release().then(() => {
+          wakeLock2A = null;
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+
+  document.addEventListener("visibilitychange", async () => {
+    if (wakeLock2A !== null && document.visibilityState === "visible") {
+      requestWakeLock2A();
+    }
+  });
 
 
 
 /* 2nd Negative */
   let intervalId2N;
   let continuousId2N;
+  let wakeLock2N = null;
 
   const button2N = document.getElementById("button-2n");
   const clockLabel2N = document.getElementById("clock-label-2n");
@@ -413,7 +480,7 @@ if (!("wakeLock" in navigator)) {
     button2N.style.backgroundColor = "red";
     button2N.setAttribute("onclick", "stopTime2N()");
     
-    requestWakeLock();
+    requestWakeLock2N();
   }
 
   function stopTime2N() {
@@ -425,7 +492,7 @@ if (!("wakeLock" in navigator)) {
     button2N.style.backgroundColor = "lime";
     button2N.setAttribute("onclick", "startTime2N()");
     
-    releaseWakeLock();
+    releaseWakeLock2N();
   }
 
   function resetTime2N() {
@@ -442,7 +509,7 @@ if (!("wakeLock" in navigator)) {
     time2N += 1;
     
     if (buttonDirection.innerHTML === "Count down") clockLabel2N.innerHTML = `${Math.trunc(time2N / 60)}:${padSeconds(time2N % 60)}`;
-    else if (-60 < stop - time2N && stop - time2N < 0) clockLabel2N.innerHTML = `-${Math.trunc((stop - time2N) / 60)}:${padSeconds(Math.abs(stop - time2N) % 60)}`
+    else if (-60 < stop - time2N && stop - time2N < 0) clockLabel2N.innerHTML = `-${Math.trunc((stop - time2N) / 60)}:${padSeconds(Math.abs(stop - time2N) % 60)}`;
     else clockLabel2N.innerHTML = `${Math.trunc((stop - time2N) / 60)}:${padSeconds(Math.abs(stop - time2N) % 60)}`;
     
     if (time2N < stop) {
@@ -470,12 +537,45 @@ if (!("wakeLock" in navigator)) {
       ringOvertime2N.setAttribute("stroke-dasharray", `${CIRCUMFERENCE*(time2N-stop+1)/(continuous-stop)} ${CIRCUMFERENCE}`);
     }
   }
+  
+  async function requestWakeLock2N() {
+    if (wakeLockSupport) {
+      try {
+        wakeLock2N = await navigator.wakeLock.request("screen");
+        wakeLock2N.addEventListener("release", () => {
+          console.log("Wake lock 2N released!");
+        });
+        console.log("Wake lock 2N acquired!");
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+
+  async function releaseWakeLock2N() {
+    if (wakeLock2N !== null) {
+      try {
+        wakeLock2N.release().then(() => {
+          wakeLock2N = null;
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+
+  document.addEventListener("visibilitychange", async () => {
+    if (wakeLock2N !== null && document.visibilityState === "visible") {
+      requestWakeLock2N();
+    }
+  });
 
 
 
 /* 3rd Affirmative */
   let intervalId3A;
   let continuousId3A;
+  let wakeLock3A = null;
 
   const button3A = document.getElementById("button-3a");
   const clockLabel3A = document.getElementById("clock-label-3a");
@@ -501,7 +601,7 @@ if (!("wakeLock" in navigator)) {
     button3A.style.backgroundColor = "red";
     button3A.setAttribute("onclick", "stopTime3A()");
     
-    requestWakeLock();
+    requestWakeLock3A();
   }
 
   function stopTime3A() {
@@ -513,7 +613,7 @@ if (!("wakeLock" in navigator)) {
     button3A.style.backgroundColor = "lime";
     button3A.setAttribute("onclick", "startTime3A()");
     
-    releaseWakeLock();
+    releaseWakeLock3A();
   }
 
   function resetTime3A() {
@@ -530,7 +630,7 @@ if (!("wakeLock" in navigator)) {
     time3A += 1;
     
     if (buttonDirection.innerHTML === "Count down") clockLabel3A.innerHTML = `${Math.trunc(time3A / 60)}:${padSeconds(time3A % 60)}`;
-    else if (-60 < stop - time3A && stop - time3A < 0) clockLabel3A.innerHTML = `-${Math.trunc((stop - time3A) / 60)}:${padSeconds(Math.abs(stop - time3A) % 60)}`
+    else if (-60 < stop - time3A && stop - time3A < 0) clockLabel3A.innerHTML = `-${Math.trunc((stop - time3A) / 60)}:${padSeconds(Math.abs(stop - time3A) % 60)}`;
     else clockLabel3A.innerHTML = `${Math.trunc((stop - time3A) / 60)}:${padSeconds(Math.abs(stop - time3A) % 60)}`;
     
     if (time3A < stop) {
@@ -558,12 +658,45 @@ if (!("wakeLock" in navigator)) {
       ringOvertime3A.setAttribute("stroke-dasharray", `${CIRCUMFERENCE*(time3A-stop+1)/(continuous-stop)} ${CIRCUMFERENCE}`);
     }
   }
+  
+  async function requestWakeLock3A() {
+    if (wakeLockSupport) {
+      try {
+        wakeLock3A = await navigator.wakeLock.request("screen");
+        wakeLock3A.addEventListener("release", () => {
+          console.log("Wake lock 3A released!");
+        });
+        console.log("Wake lock 3A acquired!");
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+
+  async function releaseWakeLock3A() {
+    if (wakeLock3A !== null) {
+      try {
+        wakeLock3A.release().then(() => {
+          wakeLock3A = null;
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+
+  document.addEventListener("visibilitychange", async () => {
+    if (wakeLock3A !== null && document.visibilityState === "visible") {
+      requestWakeLock3A();
+    }
+  });
 
 
 
 /* 3rd Negative */
   let intervalId3N;
   let continuousId3N;
+  let wakeLock3N = null;
 
   const button3N = document.getElementById("button-3n");
   const clockLabel3N = document.getElementById("clock-label-3n");
@@ -589,7 +722,7 @@ if (!("wakeLock" in navigator)) {
     button3N.style.backgroundColor = "red";
     button3N.setAttribute("onclick", "stopTime3N()");
     
-    requestWakeLock();
+    requestWakeLock3N();
   }
 
   function stopTime3N() {
@@ -601,7 +734,7 @@ if (!("wakeLock" in navigator)) {
     button3N.style.backgroundColor = "lime";
     button3N.setAttribute("onclick", "startTime3N()");
     
-    releaseWakeLock();
+    releaseWakeLock3N();
   }
 
   function resetTime3N() {
@@ -618,7 +751,7 @@ if (!("wakeLock" in navigator)) {
     time3N += 1;
     
     if (buttonDirection.innerHTML === "Count down") clockLabel3N.innerHTML = `${Math.trunc(time3N / 60)}:${padSeconds(time3N % 60)}`;
-    else if (-60 < stop - time3N && stop - time3N < 0) clockLabel3N.innerHTML = `-${Math.trunc((stop - time3N) / 60)}:${padSeconds(Math.abs(stop - time3N) % 60)}`
+    else if (-60 < stop - time3N && stop - time3N < 0) clockLabel3N.innerHTML = `-${Math.trunc((stop - time3N) / 60)}:${padSeconds(Math.abs(stop - time3N) % 60)}`;
     else clockLabel3N.innerHTML = `${Math.trunc((stop - time3N) / 60)}:${padSeconds(Math.abs(stop - time3N) % 60)}`;
     
     if (time3N < stop) {
@@ -646,6 +779,38 @@ if (!("wakeLock" in navigator)) {
       ringOvertime3N.setAttribute("stroke-dasharray", `${CIRCUMFERENCE*(time3N-stop+1)/(continuous-stop)} ${CIRCUMFERENCE}`);
     }
   }
+  
+  async function requestWakeLock3N() {
+    if (wakeLockSupport) {
+      try {
+        wakeLock3N = await navigator.wakeLock.request("screen");
+        wakeLock3N.addEventListener("release", () => {
+          console.log("Wake lock 3N released!");
+        });
+        console.log("Wake lock 3N acquired!");
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+
+  async function releaseWakeLock3N() {
+    if (wakeLock3N !== null) {
+      try {
+        wakeLock3N.release().then(() => {
+          wakeLock3N = null;
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+
+  document.addEventListener("visibilitychange", async () => {
+    if (wakeLock3N !== null && document.visibilityState === "visible") {
+      requestWakeLock3N();
+    }
+  });
 
 
 
