@@ -1,9 +1,10 @@
 const CIRCUMFERENCE = 252;
 
 const bell = document.getElementById("bell");
+const timeForm = document.getElementById("time-form");
 const countDirection = document.getElementById("count-direction");
 const buttonDirection = document.getElementById("button-direction");
-const timeForm = document.getElementById("time-form");
+const wakeMessage = document.getElementById("wake-message");
 const warningMinutes = document.getElementById("warning-minutes");
 const warningSeconds = document.getElementById("warning-seconds");
 const stopMinutes = document.getElementById("stop-minutes");
@@ -14,6 +15,8 @@ const continuousSeconds = document.getElementById("continuous-seconds");
 let warning = 0;
 let stop = 0;
 let continuous = 0;
+let wakeLockSupport = true;
+let wakeLock = null;
 
 function padSeconds(seconds) {
   if (seconds !== "" && seconds < 10) {
@@ -25,6 +28,7 @@ function padSeconds(seconds) {
 function resetAll() {
   timeForm.reset();
   countUp();
+  
   resetTime1A();
   resetTime1N();
   resetTime2A();
@@ -78,6 +82,43 @@ function countUp() {
   buttonDirection.setAttribute("onclick", "countDown()");
 }
 
+async function requestWakeLock() {
+  if (wakeLockSupport) {
+    try {
+      wakeLock = await navigator.wakeLock.request("screen");
+      wakeLock.addEventListener("release", () => {
+        console.log("Wake lock released!");
+      });
+      console.log("Wake lock acquired!");
+    } catch (error) {
+      console.error(error);
+    }
+  }
+}
+
+async function releaseWakeLock() {
+  if (wakeLock !== null) {
+    try {
+      wakeLock.release().then(() => {
+        wakeLock = null;
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+}
+
+document.addEventListener("visibilitychange", async () => {
+  if (wakeLock !== null && document.visibilityState === "visible") {
+    requestWakeLock();
+  }
+});
+
+if (!("wakeLock" in navigator)) {
+  wakeLockSupport = false;
+  wakeMessage.innerHTML = "Wake lock may not be supported by this device or browser. You should ensure that your device's screen timeout time will not interfere with your device displaying the clocks.";
+}
+
 
 
 /* 1st Affirmative */
@@ -107,6 +148,8 @@ function countUp() {
     button1A.style.borderColor = "red";
     button1A.style.backgroundColor = "red";
     button1A.setAttribute("onclick", "stopTime1A()");
+    
+    requestWakeLock();
   }
 
   function stopTime1A() {
@@ -117,6 +160,8 @@ function countUp() {
     button1A.style.borderColor = "lime";
     button1A.style.backgroundColor = "lime";
     button1A.setAttribute("onclick", "startTime1A()");
+    
+    releaseWakeLock();
   }
 
   function resetTime1A() {
@@ -191,6 +236,8 @@ function countUp() {
     button1N.style.borderColor = "red";
     button1N.style.backgroundColor = "red";
     button1N.setAttribute("onclick", "stopTime1N()");
+    
+    requestWakeLock();
   }
 
   function stopTime1N() {
@@ -201,6 +248,8 @@ function countUp() {
     button1N.style.borderColor = "lime";
     button1N.style.backgroundColor = "lime";
     button1N.setAttribute("onclick", "startTime1N()");
+    
+    releaseWakeLock();
   }
 
   function resetTime1N() {
@@ -275,6 +324,8 @@ function countUp() {
     button2A.style.borderColor = "red";
     button2A.style.backgroundColor = "red";
     button2A.setAttribute("onclick", "stopTime2A()");
+    
+    requestWakeLock();
   }
 
   function stopTime2A() {
@@ -285,6 +336,8 @@ function countUp() {
     button2A.style.borderColor = "lime";
     button2A.style.backgroundColor = "lime";
     button2A.setAttribute("onclick", "startTime2A()");
+    
+    releaseWakeLock();
   }
 
   function resetTime2A() {
@@ -359,6 +412,8 @@ function countUp() {
     button2N.style.borderColor = "red";
     button2N.style.backgroundColor = "red";
     button2N.setAttribute("onclick", "stopTime2N()");
+    
+    requestWakeLock();
   }
 
   function stopTime2N() {
@@ -369,6 +424,8 @@ function countUp() {
     button2N.style.borderColor = "lime";
     button2N.style.backgroundColor = "lime";
     button2N.setAttribute("onclick", "startTime2N()");
+    
+    releaseWakeLock();
   }
 
   function resetTime2N() {
@@ -443,6 +500,8 @@ function countUp() {
     button3A.style.borderColor = "red";
     button3A.style.backgroundColor = "red";
     button3A.setAttribute("onclick", "stopTime3A()");
+    
+    requestWakeLock();
   }
 
   function stopTime3A() {
@@ -453,6 +512,8 @@ function countUp() {
     button3A.style.borderColor = "lime";
     button3A.style.backgroundColor = "lime";
     button3A.setAttribute("onclick", "startTime3A()");
+    
+    releaseWakeLock();
   }
 
   function resetTime3A() {
@@ -527,6 +588,8 @@ function countUp() {
     button3N.style.borderColor = "red";
     button3N.style.backgroundColor = "red";
     button3N.setAttribute("onclick", "stopTime3N()");
+    
+    requestWakeLock();
   }
 
   function stopTime3N() {
@@ -537,6 +600,8 @@ function countUp() {
     button3N.style.borderColor = "lime";
     button3N.style.backgroundColor = "lime";
     button3N.setAttribute("onclick", "startTime3N()");
+    
+    releaseWakeLock();
   }
 
   function resetTime3N() {

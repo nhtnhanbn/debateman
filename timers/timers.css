@@ -2,6 +2,7 @@ body {
     margin: auto;
     width: 90%;
     overscroll-behavior-y: contain;
+    font-family: 'Times New Roman', 'Times', 'Serif';
 }
 
 a {
@@ -29,7 +30,7 @@ footer {
 }
 
 footer ul {
-    font-family:'Helvetica', 'Arial', 'Sans-Serif';
+    font-family: 'Helvetica', 'Arial', 'Sans-Serif';
     padding: 0px;
     list-style: none;
     font-weight: bold;
@@ -41,7 +42,14 @@ footer ul li {
 }
 
 input {
-    width: 3em;
+    width: 2.5em;
+    font-size: 100%;
+    font-family: 'Times New Roman', 'Times', 'Serif';
+}
+
+button {
+    font-size: 100%;
+    font-family: 'Times New Roman', 'Times', 'Serif';
 }
 
 .big_button {
@@ -49,6 +57,7 @@ input {
     width: 300px;
     font-size: 200%;
     cursor: pointer;
+    font-family: 'Helvetica', 'Arial', 'Sans-Serif';;
 }
 
 .speaker {
